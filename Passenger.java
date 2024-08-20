@@ -66,5 +66,5 @@ public class Passenger {
                  "\n" + "Age : " + getAge() + "\n" + "Preference : " + getPreference() +
                 "\n" + "Seat Number : " + getSeat_no() + "\n" +"Booking Type : " + getTicket_type()+
                 "\n"+"------------------------" ;
-    }// Done
+    }
 }
