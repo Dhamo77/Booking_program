@@ -2,14 +2,14 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class Booking {
+public class TrainBooking {
 
-   static ArrayList<Passenger> confirmedList=new ArrayList<>();// total confirmed booking in the train
-   static ArrayList<Passenger> upperList=new ArrayList<>(); // total confirmed booking in the upper birth
-   static ArrayList<Passenger> lowerList=new ArrayList<>(); // total confirmed booking in the lower birth
-   static ArrayList<Passenger> middleList=new ArrayList<>(); // total confirmed booking in the middle birth
-   static Queue<Passenger> racList=new LinkedList<>();
-   static Queue<Passenger> waitingList=new LinkedList<>();
+   static ArrayList<TrainPassenger> confirmedList=new ArrayList<>();// total confirmed booking in the train
+   static ArrayList<TrainPassenger> upperList=new ArrayList<>(); // total confirmed booking in the upper birth
+   static ArrayList<TrainPassenger> lowerList=new ArrayList<>(); // total confirmed booking in the lower birth
+   static ArrayList<TrainPassenger> middleList=new ArrayList<>(); // total confirmed booking in the middle birth
+   static Queue<TrainPassenger> racList=new LinkedList<>();
+   static Queue<TrainPassenger> waitingList=new LinkedList<>();
 
    private final static int berth_limit =3;
    private final static int upper_limit=1;
@@ -20,7 +20,7 @@ public class Booking {
    private static int lowerSeatNumber=1;
    private static int middleSeatNumber=2;
    private static int upperSeatNumber=3;
-   public static void booking(Passenger p){
+   public static void booking(TrainPassenger p){
       if (upperList.size()==upper_limit&&lowerList.size()==lower_limit&&middleList.size()==middle_limit){
          if (racList.size()<rac_limit){
             System.out.println("****** Ticket were booked in the RAC list ******");
@@ -40,7 +40,7 @@ public class Booking {
       else if (checkTicket(p)){
              p.setTicket_type("Berth");
              System.out.println("*****Ticket is confirmed***** ");
-             System.out.println("Passenger ID number  is : "+p.getId());
+             System.out.println("TrainPassenger ID number  is : "+p.getId());
              confirmedList.add(p);
       }
       else {
@@ -56,11 +56,11 @@ public class Booking {
       System.out.println("No.of Seats in Waiting List : "+ Math.abs(waitingList.size()-waiting_limit));
    }
    public void print_tickets(){
-      for (Passenger p:confirmedList){
+      for (TrainPassenger p:confirmedList){
          System.out.println(p.toString());
       }
    }
-   private static boolean checkTicket(Passenger p){
+   private static boolean checkTicket(TrainPassenger p){
       if (confirmedList.size()< berth_limit) {
          if (p.getPreference() == 'U'&&upperList.size()<upper_limit) {
             upperList.add(p);

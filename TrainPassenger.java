@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Passenger {
+public class TrainPassenger {
     public static Scanner scan =new Scanner(System.in);
     private static int passenger_id=0;
     private  int id;
@@ -11,20 +11,20 @@ public class Passenger {
     private String ticket_type;
 
 
-    public Passenger() {
+    public TrainPassenger() {
 
-        System.out.print("Passenger Name : ");
+        System.out.print("TrainPassenger Name : ");
         this.name =scan.next();
         System.out.print("Age : ");
         this.age = scan.nextInt();
         System.out.print("Berth Preference (L or M or U): ");
         this.preference = scan.next().toUpperCase().charAt(0);
         this.id=++passenger_id;
-        System.out.println("Passenger ID : "+id);
+        System.out.println("TrainPassenger ID : "+id);
     }
 
     public void setId(int id) {
-        Passenger.passenger_id=id;
+        TrainPassenger.passenger_id=id;
     }
     public void setName(String name) {
         this.name = name;
@@ -62,9 +62,9 @@ public class Passenger {
 
     @Override
     public String toString() {
-        return "Passenger ID : "+getId() + "\n"+ "name : " + getName()+
+        return "TrainPassenger ID : "+getId() + "\n"+ "name : " + getName()+
                  "\n" + "Age : " + getAge() + "\n" + "Preference : " + getPreference() +
-                "\n" + "Seat Number : " + getSeat_no() + "\n" +"Booking Type : " + getTicket_type()+
+                "\n" + "Seat Number : " + getSeat_no() + "\n" +"TrainBooking Type : " + getTicket_type()+
                 "\n"+"------------------------" ;
     }
 }

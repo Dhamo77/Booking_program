@@ -1,22 +1,22 @@
 import java.util.Objects;
 
-public class Cancel extends Booking {
+public class TrainCancel extends TrainBooking {
     private static char preferencefTrack='\0';
     private static int seatNumberTrack=0;
     public static void cancelling(int id){
-        for (Passenger p:confirmedList){
+        for (TrainPassenger p:confirmedList){
             if (p.getId()==id){
                 cancel(p);
                 break;
             }
         }
-        for (Passenger p:racList){
+        for (TrainPassenger p:racList){
             if (p.getId()==id){
                 cancel(p);
                 break;
             }
         }
-        for (Passenger p:waitingList){
+        for (TrainPassenger p:waitingList){
             if (p.getId()==id){
                 cancel(p);
                 break;
@@ -24,15 +24,15 @@ public class Cancel extends Booking {
         }
     }
 
-    private static void cancel(Passenger p) {
+    private static void cancel(TrainPassenger p) {
         if (Objects.equals(p.getTicket_type(), "Berth")){
             preferencefTrack=p.getPreference();
             seatNumberTrack=p.getSeat_no();
             remove(p);
             if (!racList.isEmpty()){
-                Passenger np=racList.poll();
+                TrainPassenger np=racList.poll();
                 np.setPreference(preferencefTrack);
-                Booking.booking(np);
+                TrainBooking.booking(np);
                 np.setSeat_no(seatNumberTrack);
             }
             if (!waitingList.isEmpty()){
@@ -47,7 +47,7 @@ public class Cancel extends Booking {
             waitingList.remove(p);
         }
     }
-    private static void remove(Passenger p) {
+    private static void remove(TrainPassenger p) {
         if (p.getPreference()=='M'){
             middleList.remove(p);
         }else if (p.getPreference()=='L'){
